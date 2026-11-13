@@ -14,12 +14,14 @@ namespace PharmacyApp.Presentation
     {
         private readonly IMedicineRepository _medicineRepository;
         private readonly ISaleRepository _saleRepository;
+        private readonly IPrescriptionRepository _prescriptionRepository;
 
         public MainForm()
         {
             InitializeComponent();
             _medicineRepository = new InMemoryMedicineRepository(seedSampleData: true);
             _saleRepository = new InMemorySaleRepository();
+            _prescriptionRepository = new InMemoryPrescriptionRepository();
         }
 
         private void MainForm_Load(object? sender, EventArgs e)
@@ -142,7 +144,11 @@ namespace PharmacyApp.Presentation
 
         private void MenuOperationsPrescription_Click(object? sender, EventArgs e)
         {
-            MessageBox.Show("Prescription Form will be opened in Task 2.", "New Prescription (Ctrl+K)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using var form = new PrescriptionForm(_medicineRepository, _prescriptionRepository);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                RefreshData();
+            }
         }
 
         private void MenuHelpAbout_Click(object? sender, EventArgs e)
