@@ -1,17 +1,23 @@
 using System;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using PharmacyApp.Domain.Entities;
 using PharmacyApp.Domain.Interfaces;
 using PharmacyApp.Domain.Repositories;
+using PharmacyApp.Presentation.Constants;
 using PharmacyApp.Presentation.Controls;
 using PharmacyApp.Presentation.Forms;
+using PharmacyApp.Presentation.Helpers;
 
 namespace PharmacyApp.Presentation
 {
     public partial class MainForm : Form
     {
+        private enum FilterMode { All, LowStock, Expiring }
+        private FilterMode _currentFilter = FilterMode.All;
+
         private readonly IMedicineRepository _medicineRepository;
         private readonly ISaleRepository _saleRepository;
         private readonly IPrescriptionRepository _prescriptionRepository;
@@ -46,10 +52,18 @@ namespace PharmacyApp.Presentation
         public void RefreshData()
         {
             var query = txtSearch.Text.Trim();
-            var medicines = _medicineRepository.Search(query).ToList();
-            dgvMedicines.DataSource = medicines;
+            var allMatching = _medicineRepository.Search(query);
 
-            // Update GDI+ stock chart with latest data
+            var displayed = _currentFilter switch
+            {
+                FilterMode.LowStock => allMatching.Where(m => m.IsLowStock).ToList(),
+                FilterMode.Expiring => allMatching.Where(m => m.IsExpiringSoon).ToList(),
+                _ => allMatching.ToList()
+            };
+
+            dgvMedicines.DataSource = displayed;
+
+            // Update GDI+ stock chart with latest repository data
             stockChart.SetData(_medicineRepository.GetAll());
 
             // Highlight alerts in grid
@@ -74,7 +88,14 @@ namespace PharmacyApp.Presentation
             var lowStockCount = _medicineRepository.GetLowStock().Count();
             var expiringCount = _medicineRepository.GetExpiringSoon(30).Count();
 
-            lblStatus.Text = $"Total SKUs: {medicines.Count}";
+            lblStatus.Text = $"Total SKUs: {_medicineRepository.GetAll().Count()} | Shown: {displayed.Count}";
+            lblFilterState.Text = _currentFilter switch
+            {
+                FilterMode.LowStock => "View: Low Stock Only",
+                FilterMode.Expiring => "View: Expiring Soon",
+                _ => "View: All Items"
+            };
+
             if (lowStockCount > 0 || expiringCount > 0)
             {
                 lblAlertSummary.Text = $"⚠️ Alerts: {lowStockCount} Low Stock | {expiringCount} Expiring Soon";
@@ -106,15 +127,46 @@ namespace PharmacyApp.Presentation
 
         private void MainForm_KeyDown(object? sender, KeyEventArgs e)
         {
+            // Ctrl+F -> Search
             if (e.Control && e.KeyCode == Keys.F)
             {
-                txtSearch.Focus();
-                txtSearch.SelectAll();
+                MenuEditFind_Click(sender, e);
                 e.Handled = true;
             }
+            // F5 -> Refresh
             else if (e.KeyCode == Keys.F5)
             {
-                RefreshData();
+                BtnRefresh_Click(sender, e);
+                e.Handled = true;
+            }
+            // F2 -> Edit Selected
+            else if (e.KeyCode == Keys.F2)
+            {
+                MenuEditMedicine_Click(sender, e);
+                e.Handled = true;
+            }
+            // Delete -> Delete Selected (when not inside search textbox)
+            else if (e.KeyCode == Keys.Delete && !txtSearch.Focused)
+            {
+                MenuEditDelete_Click(sender, e);
+                e.Handled = true;
+            }
+            // Ctrl+L -> Filter Low Stock
+            else if (e.Control && e.KeyCode == Keys.L)
+            {
+                MenuFilterLowStock_Click(sender, e);
+                e.Handled = true;
+            }
+            // Ctrl+E -> Filter Expiring Soon
+            else if (e.Control && e.KeyCode == Keys.E)
+            {
+                MenuFilterExpiring_Click(sender, e);
+                e.Handled = true;
+            }
+            // Ctrl+A -> Show All Items
+            else if (e.Control && e.KeyCode == Keys.A && !txtSearch.Focused)
+            {
+                MenuFilterShowAll_Click(sender, e);
                 e.Handled = true;
             }
         }
@@ -131,6 +183,96 @@ namespace PharmacyApp.Presentation
             {
                 RefreshData();
             }
+        }
+
+        private void MenuFileExportCsv_Click(object? sender, EventArgs e)
+        {
+            using var sfd = new SaveFileDialog
+            {
+                Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*",
+                FileName = $"Pharmacy_Inventory_{DateTime.Now:yyyyMMdd_HHmm}.csv",
+                Title = "Export Inventory to CSV"
+            };
+
+            if (sfd.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    var csv = CsvExporter.GenerateMedicineCsv(_medicineRepository.GetAll());
+                    File.WriteAllText(sfd.FileName, csv);
+                    MessageBox.Show(
+                        $"Inventory successfully exported to:\n{sfd.FileName}",
+                        "Export Successful",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to export CSV: {ex.Message}", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void MenuEditMedicine_Click(object? sender, EventArgs e)
+        {
+            if (dgvMedicines.CurrentRow?.DataBoundItem is Medicine med)
+            {
+                using var form = new MedicineForm(_medicineRepository, med);
+                if (form.ShowDialog(this) == DialogResult.OK)
+                {
+                    RefreshData();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a medicine row to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void MenuEditDelete_Click(object? sender, EventArgs e)
+        {
+            if (dgvMedicines.CurrentRow?.DataBoundItem is Medicine med)
+            {
+                var confirm = MessageBox.Show(
+                    $"Are you sure you want to delete '{med.Name}' (ID: {med.MedicineId})?\nThis action cannot be undone.",
+                    "Confirm Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (confirm == DialogResult.Yes)
+                {
+                    _medicineRepository.Delete(med.MedicineId);
+                    RefreshData();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a medicine row to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void MenuEditFind_Click(object? sender, EventArgs e)
+        {
+            txtSearch.Focus();
+            txtSearch.SelectAll();
+        }
+
+        private void MenuFilterLowStock_Click(object? sender, EventArgs e)
+        {
+            _currentFilter = FilterMode.LowStock;
+            RefreshData();
+        }
+
+        private void MenuFilterExpiring_Click(object? sender, EventArgs e)
+        {
+            _currentFilter = FilterMode.Expiring;
+            RefreshData();
+        }
+
+        private void MenuFilterShowAll_Click(object? sender, EventArgs e)
+        {
+            _currentFilter = FilterMode.All;
+            RefreshData();
         }
 
         private void MenuOperationsNewSale_Click(object? sender, EventArgs e)
