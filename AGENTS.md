@@ -89,15 +89,15 @@ PharmacyApp/
 
 | Criterion | Status | Task |
 |-----------|--------|------|
-| P1 – Problem & Requirements | ⬜ | Task 1 |
-| P2 – Events & Event Handling | ⬜ | Task 1 |
-| P3 – Keyboard, Mouse & Input | ⬜ | Task 1 |
+| P1 – Problem & Requirements | ✅ Done | Task 1 |
+| P2 – Events & Event Handling | ✅ Done | Task 1 |
+| P3 – Keyboard, Mouse & Input | ✅ Done | Task 1 |
 | P4 – Graphics & Drawing | ⬜ | Task 2 |
 | P5 – Menus, Commands & Resources | ⬜ | Task 3 |
 | P6 – Forms & Controls | ⬜ | Task 2 |
 | P7 – Integrate Components | ⬜ | Task 4 |
 | P8 – Application Behavior | ⬜ | Task 4 |
-| M1 – Analyze Event Flow | ⬜ | Task 1 |
+| M1 – Analyze Event Flow | ✅ Done | Task 1 |
 | M3 – Justify Design Decisions | ⬜ | Task 3 |
 | D1 – Usability Evaluation | ⬜ | Task 4 |
 | D2 – Evaluate Integration | ⬜ | Task 4 |

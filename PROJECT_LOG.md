@@ -9,10 +9,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Active Phase** | Phase 1 — Domain Layer |
+| **Active Phase** | Task 1 Complete ✅ ➡️ Starting Task 2 (Graphics & Forms) |
 | **Last Updated** | 2026-11-13 |
-| **Last Commit** | ef3443f (feat(domain): add Medicine entity with business rules and TDD tests) |
-| **Next Task** | Phase 1.2 — Define Sale & SaleItem Entities (TDD) |
+| **Last Commit** | cb2cb7c (feat(presentation): implement MainForm with keyboard accelerators, live search and mouse event handling) |
+| **Next Task** | Task 2 — Graphics and Drawing (GDI+ Stock Chart) & Forms (P4, P6) |
 | **Blockers** | None |
 
 ---
@@ -27,6 +27,11 @@
 | 4 | 2026-11-13 | Phase 0 | Create docs/plans/ structure | ab30266 | N/A |
 | 5 | 2026-11-13 | Phase 0 | Scaffold Solution & 3 Projects | ab30266 | 1/1 Pass |
 | 6 | 2026-11-13 | Phase 1 | Sub-Task 1.1: Medicine Entity + Rules | ef3443f | 4/4 Pass (100%) |
+| 7 | 2026-11-13 | Task 1 | Task 1.1: P1 Academic Specification | 535a675 | N/A |
+| 8 | 2026-11-13 | Task 1 | Task 1.2: Sale & Prescription Entities | dc8ed81 | 7/7 Pass (100%) |
+| 9 | 2026-11-13 | Task 1 | Task 1.3: Repository Contracts & In-Memory Storage | 5aa4d96 | 11/11 Pass (100%) |
+| 10 | 2026-11-13 | Task 1 | Task 1.4-1.5: P2 Events Table & M1 Mermaid Diagrams | 7f7f3b6 | N/A |
+| 11 | 2026-11-13 | Task 1 | Task 1.6: P3 Keyboard/Mouse Presentation Implementation | cb2cb7c | 11/11 Pass (100%) |
 
 ---
 
