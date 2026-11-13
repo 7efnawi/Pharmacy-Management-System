@@ -9,10 +9,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Active Phase** | Phase 0 — Scaffolding |
+| **Active Phase** | Phase 1 — Domain Layer |
 | **Last Updated** | 2026-11-13 |
-| **Last Commit** | — |
-| **Next Task** | Phase 1.1 — Define Medicine Entity |
+| **Last Commit** | ab30266 (chore: scaffold solution, projects and architecture documentation) |
+| **Next Task** | Phase 1.1 — Define Medicine Entity (TDD) |
 | **Blockers** | None |
 
 ---
@@ -21,11 +21,11 @@
 
 | # | Date | Phase | Task | Commit | Tests |
 |---|------|-------|------|--------|-------|
-| 1 | 2026-11-13 | Phase 0 | Create AGENTS.md | — | N/A |
-| 2 | 2026-11-13 | Phase 0 | Create PROJECT.md | — | N/A |
-| 3 | 2026-11-13 | Phase 0 | Create PROJECT_LOG.md | — | N/A |
-| 4 | 2026-11-13 | Phase 0 | Create docs/plans/ structure | — | N/A |
-| 5 | 2026-11-13 | Phase 0 | Write Phase 1 TDD Plan | — | N/A |
+| 1 | 2026-11-13 | Phase 0 | Create AGENTS.md | ab30266 | N/A |
+| 2 | 2026-11-13 | Phase 0 | Create PROJECT.md | ab30266 | N/A |
+| 3 | 2026-11-13 | Phase 0 | Create PROJECT_LOG.md | ab30266 | N/A |
+| 4 | 2026-11-13 | Phase 0 | Create docs/plans/ structure | ab30266 | N/A |
+| 5 | 2026-11-13 | Phase 0 | Scaffold Solution & 3 Projects | ab30266 | 1/1 Pass |
 
 ---
 
