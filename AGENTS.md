@@ -95,9 +95,9 @@ PharmacyApp/
 | P4 – Graphics & Drawing | ✅ Done | Task 2 |
 | P5 – Menus, Commands & Resources | ✅ Done | Task 3 |
 | P6 – Forms & Controls | ✅ Done | Task 2 |
-| P7 – Integrate Components | ⬜ | Task 4 |
-| P8 – Application Behavior | ⬜ | Task 4 |
+| P7 – Integrate Components | ✅ Done | Task 4 |
+| P8 – Application Behavior | ✅ Done | Task 4 |
 | M1 – Analyze Event Flow | ✅ Done | Task 1 |
 | M3 – Justify Design Decisions | ✅ Done | Task 3 |
-| D1 – Usability Evaluation | ⬜ | Task 4 |
-| D2 – Evaluate Integration | ⬜ | Task 4 |
+| D1 – Usability Evaluation | ✅ Done | Task 4 |
+| D2 – Evaluate Integration | ✅ Done | Task 4 |
