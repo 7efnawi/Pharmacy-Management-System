@@ -283,7 +283,8 @@ The project includes four comprehensive academic research reports stored in the 
 
 ## 👤 Author & Academic Context
 
-- **Author:** Ahmed Elhefnawi ([@7efnawi](https://github.com/7efnawi))
+- **Author:** Yousef Mahmoud ([@7efnawi](https://github.com/7efnawi))
+, Malak Mostafa, Youmna Mohammed, Maria Emad
 - **Course:** Windows Programming I (`ICT-D-415`)
 - **Institution:** New Cairo Technological University (NCT)
 - **Specialization:** Software Engineering & Information Technology — Year 4
