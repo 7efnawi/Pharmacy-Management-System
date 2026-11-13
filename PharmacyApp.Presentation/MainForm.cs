@@ -133,7 +133,11 @@ namespace PharmacyApp.Presentation
 
         private void MenuOperationsNewSale_Click(object? sender, EventArgs e)
         {
-            MessageBox.Show("New Sale / Checkout Form will be opened in Task 2.", "New Sale (Ctrl+O)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using var form = new SaleForm(_medicineRepository, _saleRepository);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                RefreshData();
+            }
         }
 
         private void MenuOperationsPrescription_Click(object? sender, EventArgs e)
