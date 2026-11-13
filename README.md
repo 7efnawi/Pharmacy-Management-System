@@ -83,14 +83,43 @@
 
 ## 📸 Visual Showcase & UI Gallery
 
-| Component | Visual Preview | Description |
-| :--- | :---: | :--- |
-| **Main Dashboard & GDI+ Chart** | ![Main Dashboard](docs/ScreenShots/dashboard_main.png) | Unified workspace featuring the command toolbar, live search, GDI+ stock visualization, and status strip. |
-| **Medication Add / Edit Dialog** | *`docs/ScreenShots/medicine_dialog.png`* | Modal dialog equipped with `ErrorProvider` for adding new medications or updating existing records. |
-| **Point of Sale (POS) Checkout** | *`docs/ScreenShots/pos_dialog.png`* | Split-view cashier terminal with active cart management, quantity spinners, and instant total computation. |
-| **Prescription Dispensing** | *`docs/ScreenShots/prescription_dialog.png`* | Patient verification and prescription recording form linked directly to pharmacy inventory. |
+### 1. 🖥️ Main Dashboard & GDI+ Stock Visualization
+The primary workspace combines the **Triple-Path command toolbar**, **real-time inventory DataGridView**, and **custom hardware-accelerated GDI+ Stock Chart**. Rows are dynamically styled to signal stock health (red for critical stock, yellow for approaching expiry).
 
-> 💡 **Tip:** Additional screenshots can be captured and placed into `docs/ScreenShots/` with matching filenames to expand this gallery.
+<div align="center">
+  <img src="docs/ScreenShots/dashboard_main.png" alt="Main Dashboard & GDI+ Stock Chart" width="95%" />
+  <p><em>Figure 1: Main Dashboard displaying real-time inventory DataGridView, responsive GDI+ Stock Chart, search filtering, and status strip.</em></p>
+</div>
+
+---
+
+### 2. 💊 Medication Intake & Modification (`MedicineForm`)
+A dedicated modal dialog powered by Windows Forms `ErrorProvider` for adding new medications or updating existing items. Enforces strict input validation on product names, prices ($), positive stock counts, safety thresholds, and expiry dates.
+
+<div align="center">
+  <img src="docs/ScreenShots/medicine_dialog.png" alt="Medication Add and Edit Dialog" width="85%" />
+  <p><em>Figure 2: MedicineForm modal dialog featuring categorized input fields and real-time validation error cues.</em></p>
+</div>
+
+---
+
+### 3. 🛒 Point of Sale (POS) Cashier Terminal (`SaleForm`)
+A dual-grid cashier terminal enabling rapid customer checkout. The left grid allows instant catalog browsing and quantity selection, while the right grid tracks the active cart with live subtotal calculation, dynamic item removal, and automated inventory deduction upon checkout.
+
+<div align="center">
+  <img src="docs/ScreenShots/pos_dialog.png" alt="Point of Sale Checkout Dialog" width="85%" />
+  <p><em>Figure 3: SaleForm cashier terminal demonstrating active multi-item cart management, price computation, and cash checkout.</em></p>
+</div>
+
+---
+
+### 4. 📋 Prescription Archival & Dispensing (`PrescriptionForm`)
+A specialized workflow for archiving patient prescriptions and dispensing regulated medications. Validates prescribing physician names, patient credentials, and dispensed quantities, with instant confirmation and stock synchronization.
+
+<div align="center">
+  <img src="docs/ScreenShots/prescription_dialog.png" alt="Prescription Archival and Dispensing Dialog" width="85%" />
+  <p><em>Figure 4: PrescriptionForm showing patient verification, itemized drug dosage assignment, and successful archival confirmation.</em></p>
+</div>
 
 ---
 
@@ -281,10 +310,13 @@ The project includes four comprehensive academic research reports stored in the 
 
 ---
 
-## 👤 Author & Academic Context
+## 👥 Authors & Academic Context
 
-- **Author:** Yousef Mahmoud ([@7efnawi](https://github.com/7efnawi))
-, Malak Mostafa, Youmna Mohammed, Maria Emad
+- **Team Members:**
+  - **Yousef Mahmoud** ([@7efnawi](https://github.com/7efnawi))
+  - **Malak Mostafa**
+  - **Youmna Mohammed**
+  - **Maria Emad**
 - **Course:** Windows Programming I (`ICT-D-415`)
 - **Institution:** New Cairo Technological University (NCT)
 - **Specialization:** Software Engineering & Information Technology — Year 4
