@@ -96,6 +96,14 @@ namespace PharmacyApp.Presentation
                 _ => "View: All Items"
             };
 
+            // Update menu checkmarks for active view filter
+            menuViewFilterLow.Checked = (_currentFilter == FilterMode.LowStock);
+            menuViewFilterExpiring.Checked = (_currentFilter == FilterMode.Expiring);
+            menuViewFilterAll.Checked = (_currentFilter == FilterMode.All);
+
+            // Update command enabled/disabled states based on selection
+            UpdateCommandStates();
+
             if (lowStockCount > 0 || expiringCount > 0)
             {
                 lblAlertSummary.Text = $"⚠️ Alerts: {lowStockCount} Low Stock | {expiringCount} Expiring Soon";
@@ -106,6 +114,20 @@ namespace PharmacyApp.Presentation
                 lblAlertSummary.Text = "✅ All stock levels normal";
                 lblAlertSummary.ForeColor = Color.DarkGreen;
             }
+        }
+
+        private void DgvMedicines_SelectionChanged(object? sender, EventArgs e)
+        {
+            UpdateCommandStates();
+        }
+
+        private void UpdateCommandStates()
+        {
+            bool hasSelection = dgvMedicines.CurrentRow != null && dgvMedicines.CurrentRow.Index >= 0;
+            menuEditMedicine.Enabled = hasSelection;
+            menuEditDelete.Enabled = hasSelection;
+            menuContextEdit.Enabled = hasSelection;
+            menuContextDelete.Enabled = hasSelection;
         }
 
         private void TxtSearch_TextChanged(object? sender, EventArgs e)

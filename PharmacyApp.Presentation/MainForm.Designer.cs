@@ -473,6 +473,7 @@ namespace PharmacyApp.Presentation
             this.dgvMedicines.ContextMenuStrip = this.contextMenuGrid;
             this.dgvMedicines.TabIndex = 3;
             this.dgvMedicines.CellDoubleClick += new DataGridViewCellEventHandler(this.DgvMedicines_CellDoubleClick);
+            this.dgvMedicines.SelectionChanged += new System.EventHandler(this.DgvMedicines_SelectionChanged);
 
             // 
             // stockChart
