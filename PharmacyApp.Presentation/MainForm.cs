@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using PharmacyApp.Domain.Entities;
 using PharmacyApp.Domain.Interfaces;
 using PharmacyApp.Domain.Repositories;
+using PharmacyApp.Presentation.Controls;
 
 namespace PharmacyApp.Presentation
 {
@@ -44,6 +45,9 @@ namespace PharmacyApp.Presentation
             var query = txtSearch.Text.Trim();
             var medicines = _medicineRepository.Search(query).ToList();
             dgvMedicines.DataSource = medicines;
+
+            // Update GDI+ stock chart with latest data
+            stockChart.SetData(_medicineRepository.GetAll());
 
             // Highlight alerts in grid
             foreach (DataGridViewRow row in dgvMedicines.Rows)

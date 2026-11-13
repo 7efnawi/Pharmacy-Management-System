@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Windows.Forms;
+using PharmacyApp.Presentation.Controls;
 
 namespace PharmacyApp.Presentation
 {
@@ -26,6 +27,8 @@ namespace PharmacyApp.Presentation
         private StatusStrip statusStripMain;
         private ToolStripStatusLabel lblStatus;
         private ToolStripStatusLabel lblAlertSummary;
+        private TableLayoutPanel tableLayoutMain;
+        private StockChartControl stockChart;
 
         protected override void Dispose(bool disposing)
         {
@@ -59,6 +62,8 @@ namespace PharmacyApp.Presentation
             this.statusStripMain = new StatusStrip();
             this.lblStatus = new ToolStripStatusLabel();
             this.lblAlertSummary = new ToolStripStatusLabel();
+            this.tableLayoutMain = new TableLayoutPanel();
+            this.stockChart = new StockChartControl();
 
             // 
             // menuStripMain
@@ -218,6 +223,25 @@ namespace PharmacyApp.Presentation
             this.dgvMedicines.CellDoubleClick += new DataGridViewCellEventHandler(this.DgvMedicines_CellDoubleClick);
 
             // 
+            // stockChart
+            // 
+            this.stockChart.Dock = DockStyle.Fill;
+            this.stockChart.BorderStyle = BorderStyle.FixedSingle;
+
+            // 
+            // tableLayoutMain — 2 rows: chart (180px fixed) + grid (fills rest)
+            // 
+            this.tableLayoutMain.Dock = DockStyle.Fill;
+            this.tableLayoutMain.ColumnCount = 1;
+            this.tableLayoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            this.tableLayoutMain.RowCount = 2;
+            this.tableLayoutMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 180F));  // chart
+            this.tableLayoutMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));   // grid
+            this.tableLayoutMain.Controls.Add(this.stockChart, 0, 0);
+            this.tableLayoutMain.Controls.Add(this.dgvMedicines, 0, 1);
+            this.tableLayoutMain.TabIndex = 5;
+
+            // 
             // statusStripMain
             // 
             this.statusStripMain.Items.AddRange(new ToolStripItem[] {
@@ -250,7 +274,7 @@ namespace PharmacyApp.Presentation
             this.AutoScaleDimensions = new SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(980, 600);
-            this.Controls.Add(this.dgvMedicines);
+            this.Controls.Add(this.tableLayoutMain);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.menuStripMain);
