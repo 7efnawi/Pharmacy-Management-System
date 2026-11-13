@@ -12,7 +12,7 @@ namespace PharmacyApp.Tests.Presentation
         public void GetAllCommands_ReturnsAtLeastTenCommands()
         {
             var commands = AppCommands.GetAllCommands();
-            Assert.IsGreaterThanOrEqualTo(commands.Count, 10);
+            Assert.IsGreaterThanOrEqualTo(10, commands.Count);
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace PharmacyApp.Tests.Presentation
         {
             var commands = AppCommands.GetAllCommands();
             int shortcutCount = commands.Count(c => !string.IsNullOrWhiteSpace(c.ShortcutText));
-            Assert.IsGreaterThanOrEqualTo(shortcutCount, 5);
+            Assert.IsGreaterThanOrEqualTo(5, shortcutCount);
         }
 
         [TestMethod]
