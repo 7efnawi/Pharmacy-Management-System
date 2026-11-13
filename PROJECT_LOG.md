@@ -11,7 +11,7 @@
 |-------|-------|
 | **Active Phase** | Phase 1 — Domain Layer |
 | **Last Updated** | 2026-11-13 |
-| **Last Commit** | Pending (Sub-Task 1.1) |
+| **Last Commit** | ef3443f (feat(domain): add Medicine entity with business rules and TDD tests) |
 | **Next Task** | Phase 1.2 — Define Sale & SaleItem Entities (TDD) |
 | **Blockers** | None |
 
@@ -26,7 +26,7 @@
 | 3 | 2026-11-13 | Phase 0 | Create PROJECT_LOG.md | ab30266 | N/A |
 | 4 | 2026-11-13 | Phase 0 | Create docs/plans/ structure | ab30266 | N/A |
 | 5 | 2026-11-13 | Phase 0 | Scaffold Solution & 3 Projects | ab30266 | 1/1 Pass |
-| 6 | 2026-11-13 | Phase 1 | Sub-Task 1.1: Medicine Entity + Rules | Pending | 4/4 Pass (100%) |
+| 6 | 2026-11-13 | Phase 1 | Sub-Task 1.1: Medicine Entity + Rules | ef3443f | 4/4 Pass (100%) |
 
 ---
 
