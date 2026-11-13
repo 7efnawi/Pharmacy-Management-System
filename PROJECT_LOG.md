@@ -11,8 +11,8 @@
 |-------|-------|
 | **Active Phase** | Phase 1 — Domain Layer |
 | **Last Updated** | 2026-11-13 |
-| **Last Commit** | ab30266 (chore: scaffold solution, projects and architecture documentation) |
-| **Next Task** | Phase 1.1 — Define Medicine Entity (TDD) |
+| **Last Commit** | Pending (Sub-Task 1.1) |
+| **Next Task** | Phase 1.2 — Define Sale & SaleItem Entities (TDD) |
 | **Blockers** | None |
 
 ---
@@ -26,6 +26,7 @@
 | 3 | 2026-11-13 | Phase 0 | Create PROJECT_LOG.md | ab30266 | N/A |
 | 4 | 2026-11-13 | Phase 0 | Create docs/plans/ structure | ab30266 | N/A |
 | 5 | 2026-11-13 | Phase 0 | Scaffold Solution & 3 Projects | ab30266 | 1/1 Pass |
+| 6 | 2026-11-13 | Phase 1 | Sub-Task 1.1: Medicine Entity + Rules | Pending | 4/4 Pass (100%) |
 
 ---
 
@@ -38,8 +39,8 @@
 - [x] docs/plans/ directory created
 - [x] Phase 1 plan written
 
-### Phase 1 — Domain Layer ⬜
-- [ ] 1.1 Define `Medicine` entity + unit tests
+### Phase 1 — Domain Layer 🔄
+- [x] 1.1 Define `Medicine` entity + unit tests
 - [ ] 1.2 Define `Sale` + `SaleItem` entities + unit tests
 - [ ] 1.3 Define `Prescription` entity + unit tests
 - [ ] 1.4 Define `IMedicineRepository` interface
