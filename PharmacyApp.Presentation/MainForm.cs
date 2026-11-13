@@ -6,6 +6,7 @@ using PharmacyApp.Domain.Entities;
 using PharmacyApp.Domain.Interfaces;
 using PharmacyApp.Domain.Repositories;
 using PharmacyApp.Presentation.Controls;
+using PharmacyApp.Presentation.Forms;
 
 namespace PharmacyApp.Presentation
 {
@@ -93,11 +94,11 @@ namespace PharmacyApp.Presentation
         {
             if (e.RowIndex >= 0 && dgvMedicines.Rows[e.RowIndex].DataBoundItem is Medicine med)
             {
-                MessageBox.Show(
-                    $"Medicine: {med.Name}\nID: {med.MedicineId}\nCategory: {med.Category}\nPrice: ${med.Price:F2}\nStock: {med.StockQuantity} {med.Unit}\nExpiry: {med.ExpiryDate:yyyy-MM-dd}",
-                    "Medicine Details (Inspection)",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                using var form = new MedicineForm(_medicineRepository, med);
+                if (form.ShowDialog(this) == DialogResult.OK)
+                {
+                    RefreshData();
+                }
             }
         }
 
@@ -123,7 +124,11 @@ namespace PharmacyApp.Presentation
 
         private void MenuFileNewMedicine_Click(object? sender, EventArgs e)
         {
-            MessageBox.Show("New Medicine Dialog will be opened in Task 2.", "New Medicine (Ctrl+N)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using var form = new MedicineForm(_medicineRepository);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                RefreshData();
+            }
         }
 
         private void MenuOperationsNewSale_Click(object? sender, EventArgs e)
