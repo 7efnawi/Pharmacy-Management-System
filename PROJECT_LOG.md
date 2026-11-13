@@ -9,10 +9,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Active Phase** | Task 1 Complete ✅ ➡️ Starting Task 2 (Graphics & Forms) |
+| **Active Phase** | Task 2 Complete ✅ ➡️ Starting Task 3 (Menus, Commands & Resources) |
 | **Last Updated** | 2026-11-13 |
-| **Last Commit** | cb2cb7c (feat(presentation): implement MainForm with keyboard accelerators, live search and mouse event handling) |
-| **Next Task** | Task 2 — Graphics and Drawing (GDI+ Stock Chart) & Forms (P4, P6) |
+| **Last Commit** | 662233c (docs: complete Task 2 report covering P4 and P6 criteria) |
+| **Next Task** | Task 3 — Menus, Commands & Resources (Criteria P5, M3) |
 | **Blockers** | None |
 
 ---
@@ -32,6 +32,12 @@
 | 9 | 2026-11-13 | Task 1 | Task 1.3: Repository Contracts & In-Memory Storage | 5aa4d96 | 11/11 Pass (100%) |
 | 10 | 2026-11-13 | Task 1 | Task 1.4-1.5: P2 Events Table & M1 Mermaid Diagrams | 7f7f3b6 | N/A |
 | 11 | 2026-11-13 | Task 1 | Task 1.6: P3 Keyboard/Mouse Presentation Implementation | cb2cb7c | 11/11 Pass (100%) |
+| 12 | 2026-11-13 | Task 2 | Task 2.1: GDI+ StockChartControl with dynamic color coding | 27c9a1f | 11/11 Pass (100%) |
+| 13 | 2026-11-13 | Task 2 | Task 2.2: InputValidator with 5 validation rules & TDD | df42015 | 22/22 Pass (100%) |
+| 14 | 2026-11-13 | Task 2 | Task 2.3: MedicineForm Add/Edit Dialog with validation | 6240f1a | 22/22 Pass (100%) |
+| 15 | 2026-11-13 | Task 2 | Task 2.4: SaleForm POS Checkout with dual grids & cart | fbda533 | 22/22 Pass (100%) |
+| 16 | 2026-11-13 | Task 2 | Task 2.5: PrescriptionForm with patient & doctor validation | 90ec2ec | 22/22 Pass (100%) |
+| 17 | 2026-11-13 | Task 2 | Task 2.6: Academic Report covering P4 and P6 criteria | 662233c | 22/22 Pass (100%) |
 
 ---
 

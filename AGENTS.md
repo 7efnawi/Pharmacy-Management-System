@@ -92,9 +92,9 @@ PharmacyApp/
 | P1 – Problem & Requirements | ✅ Done | Task 1 |
 | P2 – Events & Event Handling | ✅ Done | Task 1 |
 | P3 – Keyboard, Mouse & Input | ✅ Done | Task 1 |
-| P4 – Graphics & Drawing | ⬜ | Task 2 |
+| P4 – Graphics & Drawing | ✅ Done | Task 2 |
 | P5 – Menus, Commands & Resources | ⬜ | Task 3 |
-| P6 – Forms & Controls | ⬜ | Task 2 |
+| P6 – Forms & Controls | ✅ Done | Task 2 |
 | P7 – Integrate Components | ⬜ | Task 4 |
 | P8 – Application Behavior | ⬜ | Task 4 |
 | M1 – Analyze Event Flow | ✅ Done | Task 1 |
