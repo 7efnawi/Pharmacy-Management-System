@@ -5,7 +5,14 @@
 
 # dotenv files
 .env
+
+# Agent & AI Assistant files
 .agents/
+.gemini/
+AGENTS.md
+PROJECT.md
+PROJECT_LOG.md
+docs/plans/
 
 # User-specific files
 *.rsuser
